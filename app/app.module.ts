@@ -7,14 +7,18 @@ import {BrowserModule}  from '@angular/platform-browser';
 /**
  * Project packages.
  */
-import {EventsAppComponent} from './events-app.component';
+import {EventsAppComponent}         from './events-app.component';
+import {EventsListComponent}        from './events/events-list.component'; 
+import {EventThumbnailComponent}    from './events/event-thumbnail.component';
 
 @NgModule({
     /**
      * Components needs to be registred on a module in order to work.
      */
     declarations: [
-        EventsAppComponent
+        EventsAppComponent,
+        EventsListComponent,
+        EventThumbnailComponent
     ],
 
     /**
