@@ -10,6 +10,7 @@ import {BrowserModule}  from '@angular/platform-browser';
 import {EventsAppComponent}         from './events-app.component';
 import {EventsListComponent}        from './events/events-list.component'; 
 import {EventThumbnailComponent}    from './events/event-thumbnail.component';
+import {NavbarComponent}            from './nav/navbar.component';
 
 @NgModule({
     /**
@@ -18,7 +19,8 @@ import {EventThumbnailComponent}    from './events/event-thumbnail.component';
     declarations: [
         EventsAppComponent,
         EventsListComponent,
-        EventThumbnailComponent
+        EventThumbnailComponent,
+        NavbarComponent
     ],
 
     /**
