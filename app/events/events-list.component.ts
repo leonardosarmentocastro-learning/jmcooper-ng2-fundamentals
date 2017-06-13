@@ -99,6 +99,7 @@ export class EventsListComponent {
             city: 'Amsterdam',
             country: 'Netherlands'
         },
+        onlineUrl: 'http://ng-nl.org',
         sessions: [{
             id: 1,
             name: "Testing Angular 4 Workshop",
