@@ -6,7 +6,8 @@ import {Component, OnInit} from '@angular/core';
 /**
  * Project packages.
  */
-import {EventService} from './shared/event.service';
+import {EventService}   from './shared/event.service';
+import {ToastrService}  from './../common/toastr.service';
 
 @Component({
     selector: 'events-list',
@@ -16,7 +17,9 @@ import {EventService} from './shared/event.service';
             <hr/>
             <div class="row">
                 <div *ngFor="let event of events" class="col-md-5">
-                    <event-thumbnail [event]="event">
+                    <event-thumbnail 
+                        [event]="event"
+                        (click)="handleThumbnailClick(event.name)">
                     </event-thumbnail>
                 </div>
             </div>
@@ -39,12 +42,24 @@ export class EventsListComponent implements OnInit {
      * Approach n.2:
      * Use the "Typescript" syntax sugar for the "Approach n.1".
      */
+    // events:any[];
+    // constructor(private eventsService:EventService) {
+
+    // }
+
     events:any[];
-    constructor(private eventsService:EventService) {
+    constructor(
+        private eventsService:EventService, 
+        private toastrService:ToastrService) {
 
     }
 
     ngOnInit(): void {
         this.events = this.eventsService.getEvents();
+    }
+
+    handleThumbnailClick(name:string) {
+        let message = name;
+        this.toastrService.success(message);
     }
 }

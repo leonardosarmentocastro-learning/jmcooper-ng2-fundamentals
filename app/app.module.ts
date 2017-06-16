@@ -12,6 +12,7 @@ import {EventsListComponent}        from './events/events-list.component';
 import {EventService}               from './events/shared/event.service';
 import {EventThumbnailComponent}    from './events/event-thumbnail.component';
 import {NavbarComponent}            from './nav/navbar.component';
+import {ToastrService}              from './common/toastr.service';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {NavbarComponent}            from './nav/navbar.component';
      * to specify it on the "providers" module attribute so Angular can correctly do the "dependency injection" on other modules for you.
      */
     providers: [
-        EventService
+        EventService,
+        ToastrService
     ]
 })
 export class AppModule {
