@@ -3,10 +3,13 @@
  */
 import {NgModule}       from '@angular/core';
 import {BrowserModule}  from '@angular/platform-browser'; 
+import {RouterModule}   from '@angular/router';
 
 /**
  * Project packages.
  */
+import {appRoutes} from './routes';
+import {EventDetailsComponent}      from './events/event-details/event-details.component';
 import {EventsAppComponent}         from './events-app.component';
 import {EventsListComponent}        from './events/events-list.component'; 
 import {EventService}               from './events/shared/event.service';
@@ -29,6 +32,7 @@ import {ToastrService}              from './common/toastr.service';
      * Components needs to be registred on a module in order to work.
      */
     declarations: [
+        EventDetailsComponent,
         EventsAppComponent,
         EventsListComponent,
         EventThumbnailComponent,
@@ -37,9 +41,11 @@ import {ToastrService}              from './common/toastr.service';
 
     /**
      * TODO: I don't why this needs to be done.
+     * I think it is might be used to import "Angular modules" related stuff.
      */
     imports: [
-        BrowserModule
+        BrowserModule,
+        RouterModule.forRoot(appRoutes)
     ],
 
     /**
