@@ -1,7 +1,8 @@
 /**
  * NPM Packages.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit}  from '@angular/core';
+import {ActivatedRoute}     from '@angular/router';
 
 /**
  * Project packages
@@ -18,13 +19,17 @@ import {EventService} from './../shared/event.service';
 export class EventDetailsComponent implements OnInit {
     event:any;
 
-    constructor(private eventService:EventService) {
+    constructor(
+        private eventService:EventService,
+        private activatedRoute:ActivatedRoute) {
 
     }
 
     ngOnInit(): void {
-        let id      = 1;
-        this.event  = this.eventService.getEvent(id);
+        let id = this.activatedRoute.snapshot.params['id'];
+        id     = Number(id);
+
+        this.event = this.eventService.getEvent(id);
     }
 
 }
