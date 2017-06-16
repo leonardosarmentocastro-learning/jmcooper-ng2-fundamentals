@@ -8,7 +8,8 @@ import {RouterModule}   from '@angular/router';
 /**
  * Project packages.
  */
-import {appRoutes} from './routes';
+import {appRoutes}                  from './routes';
+import {CreateEventComponent}       from './events/create-event.component';
 import {EventDetailsComponent}      from './events/event-details/event-details.component';
 import {EventsAppComponent}         from './events-app.component';
 import {EventsListComponent}        from './events/events-list.component'; 
@@ -32,6 +33,7 @@ import {ToastrService}              from './common/toastr.service';
      * Components needs to be registred on a module in order to work.
      */
     declarations: [
+        CreateEventComponent,
         EventDetailsComponent,
         EventsAppComponent,
         EventsListComponent,
