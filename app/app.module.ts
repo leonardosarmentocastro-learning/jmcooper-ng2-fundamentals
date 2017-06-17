@@ -59,10 +59,36 @@ import {ToastrService}              from './common/toastr.service';
      */
     providers: [
         EventRouteActivator,
+        
+        /** NOTE: This is a "syntax sugar" and Could also be written as: */
+        /** {provide: EventService, useValue: EventService} */
         EventService,
-        ToastrService
+        ToastrService,
+
+        /**
+         * As we are using a "function" as a "canDeactivate" provider on "events/new" routes, we need to
+         * defined it here to be able to use it.
+         * This is the "non sugar syntax" for providers, because we are using a function here, which means:
+         * When you find a reference to "canDeactivateCreateEvent", use this function "checkDirtyState".
+         */
+        {
+            provide: 'canDeactivateCreateEvent',
+            useValue: checkDirtyState
+        }
     ]
 })
-export class AppModule {
+export class AppModule {}
 
+/**
+ * Used to check if a user can leave a route or not.
+ * @param component
+ */
+function checkDirtyState(component: CreateEventComponent) {
+    let canDeactivate = true;
+    if (component.isDirty) {
+        let message = 'You have not saved this event, do you really want to cancel?';
+        return window.confirm(message);
+    }
+
+    return canDeactivate;
 }
