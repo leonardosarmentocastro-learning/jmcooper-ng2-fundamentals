@@ -10,7 +10,9 @@ import {RouterModule}   from '@angular/router';
  */
 import {appRoutes}                  from './routes';
 import {CreateEventComponent}       from './events/create-event.component';
+import {Error404Component}          from './errors/404.component';
 import {EventDetailsComponent}      from './events/event-details/event-details.component';
+import {EventRouteActivator}        from './events/event-details/event-route-activator.service';
 import {EventsAppComponent}         from './events-app.component';
 import {EventsListComponent}        from './events/events-list.component'; 
 import {EventService}               from './events/shared/event.service';
@@ -34,6 +36,7 @@ import {ToastrService}              from './common/toastr.service';
      */
     declarations: [
         CreateEventComponent,
+        Error404Component,
         EventDetailsComponent,
         EventsAppComponent,
         EventsListComponent,
@@ -55,6 +58,7 @@ import {ToastrService}              from './common/toastr.service';
      * to specify it on the "providers" module attribute so Angular can correctly do the "dependency injection" on other modules for you.
      */
     providers: [
+        EventRouteActivator,
         EventService,
         ToastrService
     ]
