@@ -15,6 +15,7 @@ import {EventDetailsComponent}      from './events/event-details/event-details.c
 import {EventRouteActivator}        from './events/event-details/event-route-activator.service';
 import {EventsAppComponent}         from './events-app.component';
 import {EventsListComponent}        from './events/events-list.component'; 
+import {EventsListResolver}         from './events/events-list-resolver.service';
 import {EventService}               from './events/shared/event.service';
 import {EventThumbnailComponent}    from './events/event-thumbnail.component';
 import {NavbarComponent}            from './nav/navbar.component';
@@ -58,6 +59,7 @@ import {ToastrService}              from './common/toastr.service';
      * to specify it on the "providers" module attribute so Angular can correctly do the "dependency injection" on other modules for you.
      */
     providers: [
+        EventsListResolver,
         EventRouteActivator,
         
         /** NOTE: This is a "syntax sugar" and Could also be written as: */

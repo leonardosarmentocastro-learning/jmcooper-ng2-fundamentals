@@ -11,6 +11,7 @@ import {Error404Component}      from './errors/404.component';
 import {EventDetailsComponent}  from './events/event-details/event-details.component';
 import {EventRouteActivator}    from './events/event-details/event-route-activator.service';
 import {EventsListComponent}    from './events/events-list.component';
+import {EventsListResolver}     from './events/events-list-resolver.service';
 
 export const appRoutes:Routes = [
     /** @name errors */
@@ -27,8 +28,8 @@ export const appRoutes:Routes = [
      * 2. "canDeactivate" and "canActivate" can receive an array of "Services" or "functions".
      * If you use a function, you need to register it on the given "NgModule's" provider.
      */
-    {path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
-    {path: 'events', component: EventsListComponent},
+    {path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']}, // Refers to "IMPORTANT": 1. / 2.
+    {path: 'events', component: EventsListComponent, resolve: {events: EventsListResolver}},
     {path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator]},
 
     /** @name default */

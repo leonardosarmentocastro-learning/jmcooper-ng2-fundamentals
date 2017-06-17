@@ -1,7 +1,8 @@
 /**
  * NPM Packages.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit}  from '@angular/core';
+import {ActivatedRoute}     from '@angular/router';
 
 /**
  * Project packages.
@@ -46,15 +47,23 @@ export class EventsListComponent implements OnInit {
 
     // }
 
-    events:any[];
+    events:any;
     constructor(
+        private activatedRoute:ActivatedRoute,
         private eventsService:EventService, 
         private toastrService:ToastrService) {
 
     }
 
     ngOnInit(): void {
-        this.events = this.eventsService.getEvents();
+        /**
+         * This is the resolved "events" property done by the "routes.ts" -> "EventsListResolver".
+         */
+        let resolved = {
+            events: this.activatedRoute.snapshot.data['events']
+        };
+
+        this.events = resolved.events;
     }
 
     handleThumbnailClick(name:string) {

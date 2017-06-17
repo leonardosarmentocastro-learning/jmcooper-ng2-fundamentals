@@ -1,4 +1,13 @@
+/**
+ * NPM packages.
+ */
 import {Injectable} from '@angular/core';
+import {Subject}    from 'rxjs/Rx';
+
+/**
+ * Project packages.
+ */
+
 
 /**
  * The "Injectable" decorator is only needed when your "Service" needs other "Services" to be injected
@@ -10,7 +19,16 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class EventService {
     getEvents() {
-        return EVENTS;
+        let subject = new Subject();
+        
+        let fn = () => {
+            subject.next(EVENTS);
+            subject.complete();
+        };
+        let delay = 100;
+        setTimeout(fn, delay);
+
+        return subject;
     }
 
     getEvent(id:number) {
