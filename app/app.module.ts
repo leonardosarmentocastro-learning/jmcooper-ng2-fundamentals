@@ -22,6 +22,7 @@ import {Error404Component}          from './errors/404.component';
 import {EventsAppComponent}         from './events-app.component';
 import {NavbarComponent}            from './nav/navbar.component';
 import {ToastrService}              from './common/toastr.service';
+import {AuthService}                from './user/index';
 
 
 @NgModule({
@@ -61,6 +62,14 @@ import {ToastrService}              from './common/toastr.service';
      * to specify it on the "providers" module attribute so Angular can correctly do the "dependency injection" on other modules for you.
      */
     providers: [
+        /**
+         * @name IMPORTANT:
+         * Different from "imports" and "declarations", the "providers" from a "NgModule" are shared accross others "NgModules".
+         * Since we are going to use the "AuthService" on the "navbar" and on the "login.component", which are defined on different modules,
+         * we define them on the first level module, in this case, the "app.module" and not the "user.module".
+         */
+        AuthService,
+
         EventsListResolver,
         EventRouteActivator,
         
