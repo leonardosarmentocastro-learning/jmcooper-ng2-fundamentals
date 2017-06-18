@@ -32,6 +32,19 @@ export const appRoutes:Routes = [
     {path: 'events', component: EventsListComponent, resolve: {events: EventsListResolver}},
     {path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator]},
 
+    /** @name user */
+    /**
+     * IMPORTANT:
+     * 
+     * The "loadChildren" attribute will "Lazy load" the module specified on the "path" provided to it.
+     * This path is specified as: 
+     *  `${pathToModuleFile}#${exportedModuleName}`
+     * So, if your module can be found at "app/user/user.module.ts" and the exported class name is "UserModule", you must provide
+     * a path like: 
+     *  "app/user/user.module#UserModule".
+     */
+    {path: 'user', loadChildren: 'app/user/user.module#UserModule'},
+
     /** @name default */
     {path: '', redirectTo: 'events', pathMatch: 'full'}
 ];
