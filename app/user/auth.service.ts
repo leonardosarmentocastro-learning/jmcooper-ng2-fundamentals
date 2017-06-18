@@ -32,4 +32,9 @@ export class AuthService {
         let route = ['events'];
         this.router.navigate(route);
     }
+
+    updateCurrentuser(firstName:string, lastName:string) {
+        this.currentUser.firstName  = firstName;
+        this.currentUser.lastName   = lastName;
+    }
 }

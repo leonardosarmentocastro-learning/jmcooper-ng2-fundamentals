@@ -1,10 +1,10 @@
 /**
  * NPM package.
  */
-import {CommonModule}   from '@angular/common';
-import {FormsModule}    from '@angular/forms';
-import {NgModule}       from '@angular/core';
-import {RouterModule}   from '@angular/router';
+import {CommonModule}                       from '@angular/common';
+import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
+import {NgModule}                           from '@angular/core';
+import {RouterModule}                       from '@angular/router';
 
 /**
  * Project packages.
@@ -43,6 +43,13 @@ import {userRoutes} from './user.routes';
          * and declare it here, otherwise it will throw errors when rendering the form.
          */
         FormsModule,
+
+        /**
+         * @name IMPORTANT:
+         * This import is needed in order to create "reactive forms"(different from the "template forms" that uses the "FormsModule") 
+         * like the "profile.component".
+         */
+        ReactiveFormsModule,
 
         RouterModule.forChild(userRoutes)
     ],
