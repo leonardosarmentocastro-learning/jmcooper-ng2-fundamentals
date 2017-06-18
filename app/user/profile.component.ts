@@ -38,7 +38,11 @@ export class ProfileComponent implements OnInit {
     // }
 
     if (currentUser) {
-      this.firstName = new FormControl(currentUser.firstName, Validators.required);
+      let pattern = {
+        mustStartWithAnLetter: '[a-zA-Z].*'
+      }
+
+      this.firstName = new FormControl(currentUser.firstName, [Validators.required, Validators.pattern(pattern.mustStartWithAnLetter)]);
       this.lastName  = new FormControl(currentUser.lastName, Validators.required);
       
       this.profileForm  = new FormGroup({
