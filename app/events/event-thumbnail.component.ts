@@ -1,4 +1,12 @@
+/**
+ * NPM Packages.
+ */
 import {Component, Input} from '@angular/core';
+
+/**
+ * Project packages.
+ */
+import {IEvent} from './shared/index';
 
 @Component({
     selector: 'event-thumbnail',
@@ -37,7 +45,7 @@ import {Component, Input} from '@angular/core';
     `]
 })
 export class EventThumbnailComponent {
-    @Input() event:any;
+    @Input() event:IEvent;
 
     /**
      * @description
